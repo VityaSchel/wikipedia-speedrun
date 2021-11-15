@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wikipedia Speedrun | 403</title>
+    <link rel="stylesheet" href="/stylesheets/error-pages.css?v=1.0">
+  </head>
+  <body>
+    <div class="content">
+      <div class="img"></div>
+      <div class="col">
+        <h3>Access denied</h3>
+        <p id="page"></p>
+        <p>Because not everyone can know everything</p>
+        <p class="mean">Did you mean: <a href="/">Main page</a></p>
+      </div>
+      <p>Alternatively, you can <a href="https://stigfinnare.utidteam.com/">buy my game in Steam</a> or read more information about this type of error.</p>
+    </div>
+    <script>document.getElementById("page").innerText = window.location.href.split("https://wikipedia.utidteam.com")[1];</script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+.content {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-family: sans-serif;
+}
+.img {
+  background-image: url(/wikipedia.png);
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: bottom;
+}
+.col {
+  display: inline-block;
+  margin-left: 30px;
+}
+#page {
+  color: gray;
+}

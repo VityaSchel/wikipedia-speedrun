@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wikipedia speedrun</title>
+    <meta charset="utf-8">
+    <link href="/stylesheets/style.css?v=1.2" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Speedrun of wikipedia">
+    <meta name="description" content="Play the whole wikipedia">
+    <meta property="og:title" content="Wikipedia speedrun"/>
+    <meta property="og:description" content="Play the whole wikipedia"/>
+    <!-- fuck my english -->
+    <meta property="og:image" content="https://wikipedia.utidteam.com/wikipedia.png"/>
+    <meta property="og:image:width" content="220"/>
+    <meta property="og:image:height" content="201"/>
+    <meta property="og:url" content= "https://wikipedia.utidteam.com/"/>
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:site_name" content="Wikipedia speedrun"/>
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wikipedia.utidteam.com/">
+    <meta property="twitter:title" content="Wikipedia speedrun">
+    <meta property="twitter:description" content="Play the whole wikipedia">
+    <meta property="twitter:image" content="https://wikipedia.utidteam.com/wikipedia.png">
+    <meta name="robots" content="index,follow">
+    <meta name="yandex-verification" content="1cf536362a797449" />
+    <link rel="icon" type="image/ico" href="https://wikipedia.utidteam.com/favicon.ico">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138253997-10"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-138253997-10');
+    </script>
+  </head>
+  <body>
+    <div class="lang-switcher"><a href="../">Русский</a> | English</div>
+    <div class="main-col-outer" align="center">
+      <div class="main-col" align="left">
+        <h1>Welcome to the Wikipedia speedrun website</h1>
+        <p>This is how it works. There are two ways to play: less time or less redirects.</p>
+        <div class="step-block">
+          <div class="step">
+            <div class="step-round">1</div>
+            <img src="./img/step1.png"/>
+          </div>
+          <p>You start with a random page</p>
+        </div>
+        <div class="step-block">
+          <div class="step">
+            <div class="step-round">2</div>
+            <img src="./img/step2.png"/>
+          </div>
+          <p>Use any links on page to get to <a href="https://en.wikipedia.org/wiki/Adolf_Hitler">Adolf Hitler</a> page or any page, that you have <a href="#" onclick="selectCustom(); return false;">selected</a></p>
+        </div>
+        <div class="step-block">
+          <div class="step-by">
+            <div class="step">
+              <div class="step-round">3</div>
+              <img src="/img/step3_1.png"/>
+            </div>
+            <p>Less time</p>
+            <ul>
+              <li>Follow links that may lead to articles with more links</li>
+              <li>Try to get to article about Europe</li>
+              <li>Look at the dates in pages</li>
+            </ul>
+          </div>
+          <div class="step-by">
+            <div class="step">
+              <div class="step-round">3</div>
+              <img src="/img/step3_2.png"/>
+            </div>
+            <p>Less redirects</p>
+            <ul>
+              <li>Carefully read articles and pick links</li>
+              <li>Try to get to final page without unnecessary redirects</li>
+              <li>Pay attention to articles' categories</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layout_iframe" id="layout_iframe">
+          <div align="center">
+            <a href="#" onclick="start('time'); return false;">Less time</a><br>
+            <p>or</p>
+            <a href="#" onclick="start('links'); return false;">Less redirects</a><br>
+            <p id="customPageIndicator"></p>
+          </div>
+        </div>
+        <div class="layout_iframe" id="layout_win" style="display: none;">
+          <div align="center" id="win_results">
+            Loading...
+          </div>
+        </div>
+        <div class="layout_iframe" id="layout_load" style="display: none;">
+          <div align="center">
+            Loading page...
+          </div>
+        </div>
+        <iframe width="100%" height="750px" id="wikipediasrc"></iframe>
+        <a href="#" onclick="restart(); return false;">Restart</a>&nbsp;<label id="counter"></label>
+      </div>
+    </div>
+    <footer>Made by <a href="https://vityaschel.utidteam.com/?utm_source=footer&utm_medium=link&utm_campaign=wikipedia">Viktor <div onmouseover="this.innerHTML = 'Alkali lol'" style="display:inline-block;text-decoration:underline;">Shchelochkov</div></a></footer>
+    <script src="./js/manager.js?v=1.10"></script>
+  </body>
+</html>

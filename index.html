@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wikipedia speedrun</title>
+    <meta charset="utf-8">
+    <link href="/stylesheets/style.css?v=1.2" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Википедия спидран, спидран по википедии,speedrun of wikipedia">
+    <meta name="description" content="Пройдите всю википедию как можно быстрее">
+    <meta property="og:title" content="Wikipedia speedrun"/>
+    <meta property="og:description" content="Пройдите всю википедию как можно быстрее"/>
+    <meta property="og:image" content="https://wikipedia.utidteam.com/wikipedia.png"/>
+    <meta property="og:image:width" content="220"/>
+    <meta property="og:image:height" content="201"/>
+    <meta property="og:url" content= "https://wikipedia.utidteam.com/"/>
+    <meta property="og:locale" content="ru_RU"/>
+    <meta property="og:site_name" content="Wikipedia speedrun"/>
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wikipedia.utidteam.com/">
+    <meta property="twitter:title" content="Wikipedia speedrun">
+    <meta property="twitter:description" content="Пройдите всю википедию как можно быстрее">
+    <meta property="twitter:image" content="https://wikipedia.utidteam.com/wikipedia.png">
+    <meta name="robots" content="index,follow">
+    <meta name="yandex-verification" content="1cf536362a797449" />
+    <link rel="icon" type="image/ico" href="https://wikipedia.utidteam.com/favicon.ico">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138253997-10"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-138253997-10');
+    </script>
+  </head>
+  <body>
+    <div class="lang-switcher">Русский | <a href="/en/">English</a></div>
+    <div class="main-col-outer" align="center">
+      <div class="main-col" align="left">
+        <h1>Добро пожаловать на сайт Wikipedia speedrun</h1>
+        <p>Вот как это работает. Есть два вида спидрана: по времени и переходам.</p>
+        <div class="step-block">
+          <div class="step">
+            <div class="step-round">1</div>
+            <img src="/img/step1.png"/>
+          </div>
+          <p>Вы начинаете со случайной страницы</p>
+        </div>
+        <div class="step-block">
+          <div class="step">
+            <div class="step-round">2</div>
+            <img src="/img/step2.png"/>
+          </div>
+          <p>Используя любые ссылки в статье, окажитесь на странице <a href="https://ru.wikipedia.org/wiki/Гитлер,_Адольф">Адольфа Гитлера</a> или другой странице, <a href="#" onclick="selectCustom(); return false;">выбранной вами</a></p>
+        </div>
+        <div class="step-block">
+          <div class="step-by">
+            <div class="step">
+              <div class="step-round">3</div>
+              <img src="/img/step3_1.png"/>
+            </div>
+            <p>За наименьшее время</p>
+            <ul>
+              <li>Выбирайте ссылки в начале страницы с наиболее широкими определениями</li>
+              <li>Старайтесь выйти на статью о Европе</li>
+              <li>Обращайте внимание на даты</li>
+            </ul>
+          </div>
+          <div class="step-by">
+            <div class="step">
+              <div class="step-round">3</div>
+              <img src="/img/step3_2.png"/>
+            </div>
+            <p>За наименьшее количество переходов по ссылкам</p>
+            <ul>
+              <li>Внимательно читайте статью и подбирайте ссылки</li>
+              <li>Старайтесь перейти на финальную страницу напрямую и без лишних переходов</li>
+              <li>Обращайте внимание на категории статей</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layout_iframe" id="layout_iframe">
+          <div align="center">
+            <a href="#" onclick="start('time'); return false;">За время</a><br>
+            <p>или</p>
+            <a href="#" onclick="start('links'); return false;">За переходы</a><br>
+            <p id="customPageIndicator"></p>
+          </div>
+        </div>
+        <div class="layout_iframe" id="layout_win" style="display: none;">
+          <div align="center" id="win_results">
+            Загрузка...
+          </div>
+        </div>
+        <div class="layout_iframe" id="layout_load" style="display: none;">
+          <div align="center">
+            Загрузка страницы...
+          </div>
+        </div>
+        <iframe width="100%" height="750px" id="wikipediasrc"></iframe>
+        <a href="#" onclick="restart(); return false;">Заново</a>&nbsp;<label id="counter"></label>
+      </div>
+    </div>
+    <footer>Сайт сделан <a href="https://vityaschel.utidteam.com/?utm_source=footer&utm_medium=link&utm_campaign=wikipedia">Виктором Щелочковым</a></footer>
+    <script src="./js/manager.js?v=1.10"></script>
+  </body>
+</html>

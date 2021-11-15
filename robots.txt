@@ -1,0 +1,12 @@
+# Google, Yandex
+User-agent: Googlebot
+User-agent: Yandex
+Disallow: /img/
+Disallow: /stylesheets/
+Disallow: /js/
+
+# Other
+User-agent: *
+Allow: /
+
+Sitemap: https://wikipedia.utidteam.com/sitemap.xml
