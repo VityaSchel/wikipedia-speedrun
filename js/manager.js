@@ -8,12 +8,16 @@ const isEnglishLocale = window.location.pathname.split('/')?.[1] === 'en'
 const wikipediaURI = isEnglishLocale ? 'https://wikipedia.org' : 'https://ru.wikipedia.org'
 const pUrlFormat = page => encodeURIComponent(`${wikipediaURI}/wiki/${page}`)
 
+window._loading = false
 let hrefsCollection;
 let callbackInterval;
 iframe.addEventListener("load", async function(){
-  if(iframe.src == ""){ return false; }
+  const iframeSrc = new URL(iframe.src)
+  const iframeSrcArgs = iframeSrc.searchParams
+  const pageURL = iframeSrcArgs.get('page')
+  if (pageURL === "" || iframe.src === ""){ return false; }
 
-  const wikipediaResponse = await fetch(`https://api.allorigins.win/raw?url=${(new URL(iframe.src)).searchParams.get('page')}&t=${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}`)
+  const wikipediaResponse = await fetch(`https://api.allorigins.win/raw?url=${pageURL}&t=${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}`)
   const wikipediaContent = await wikipediaResponse.text()
   iframe.contentWindow.document.querySelector('html').innerHTML = wikipediaContent
 
@@ -61,7 +65,7 @@ iframe.addEventListener("load", async function(){
     } else {
       lnk = href.substr(6);
       ln.setAttribute("href", "#");
-      ln.setAttribute("onclick","setarticle_frame(this); return false;");
+      ln.setAttribute("onclick", "setarticle_frame(this); return false;");
       ln.setAttribute("prevhref",lnk);
     }
 
@@ -75,6 +79,7 @@ iframe.addEventListener("load", async function(){
       }
     }
   }, 10);
+  window._loading = false
 }, false);
 
 let customPage = "Гитлер,_Адольф";
@@ -113,12 +118,14 @@ function start(s){
     seconds = 0;
     prefferedType = 1;
     timer = setInterval(function(){
-      seconds += 1;
-      let mins = "00"+(~~(seconds / 60));
-      let secs = "0"+seconds % 60;
+      if (window._loading) return false
+      seconds += 0.01;
+      const secondsRound = Math.floor(seconds)
+      let mins = "00"+(~~(secondsRound / 60));
+      let secs = "0"+(secondsRound % 60);
       let time = `${mins.slice(-2)}:${secs.slice(-2)}`;
-      counter.innerHTML = `Время: ${time}`;
-    },1000);
+      counter.innerHTML = isEnglishLocale ? `Time: ${time}` : `Время: ${time}`;
+    },10);
   } else {
     redirects = 0;
     prefferedType = 2;
@@ -129,7 +136,7 @@ function start(s){
 }
 
 function restart() {
-  wikipediasrc.src = "";
+  wikipediasrc.src = "/blank.html?page=";
   layout.style.display = "";
   counter.innerHTML = "";
   layout_win.style.display = "none";

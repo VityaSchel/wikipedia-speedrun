@@ -12,4 +12,5 @@ function hrefcallback(){
 
 function setarticle_frame(o){
   clickedLink = o;
+  window.parent._loading = true
 }
