@@ -11,9 +11,22 @@ body {
   display: block;
   position: relative;
 }
+@media screen and (max-width: 768px) {
+  body {
+    padding-bottom: 56px;
+  }
+}
 .main-col {
   width:50%;
 }
+@media screen and (max-width: 768px) {
+  .main-col {
+    width: 100%;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
+}
+
 .step-block {
   width:100%;
 }
@@ -44,6 +57,11 @@ body {
   display: inline-block;
   width:49%;
 }
+@media screen and (max-width: 768px) {
+  .step-by {
+    width: 100%;
+  }
+}
 .step-by > div > img {
   width: calc(100% - 65px);
   margin-left: 5px;
@@ -55,6 +73,11 @@ body {
   position: absolute;
   width:50%;
   height:750px;
+}
+@media screen and (max-width: 768px) {
+  .layout_iframe {
+    width: calc(100% - 100px);
+  }
 }
 .layout_iframe div {
   position: absolute;
@@ -70,9 +93,9 @@ footer {
   background-color: #212121;
   color: white;
   width: calc(100% - 20px);
-  margin-top:20px;
+  /* margin-top:20px; */
   padding:10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: space-between;
@@ -83,4 +106,9 @@ footer a {
 .lang-switcher {
   position: absolute;
   right: 20px;
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    padding-top: 30px;
+  }
 }
