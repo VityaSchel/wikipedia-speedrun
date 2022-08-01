@@ -71,9 +71,10 @@ footer {
   width: calc(100% - 20px);
   margin-top:20px;
   padding:10px;
-  display: block;
   position: absolute;
   bottom: 0;
+  display: flex;
+  justify-content: space-between;
 }
 footer a {
   color: white;

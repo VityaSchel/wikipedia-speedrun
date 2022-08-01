@@ -27,12 +27,12 @@ iframe.addEventListener("load", function(){
   page.head.appendChild(styles);
 
   let styles2 = document.createElement("link");
-  styles2.setAttribute("href","https://wikipedia.utidteam.com/stylesheets/articles.css?v=1.0");
+  styles2.setAttribute("href","./stylesheets/articles.css?v=1.0");
   styles2.setAttribute("rel","stylesheet");
   page.head.appendChild(styles2);
 
   let script = document.createElement("script");
-  script.setAttribute("src","https://wikipedia.utidteam.com/js/hrefcallback.js?v=1.0");
+  script.setAttribute("src","./js/hrefcallback.js?v=1.0");
   page.head.appendChild(script);
 
   let article = page.getElementById("content");
@@ -116,7 +116,7 @@ function start(s){
     prefferedType = 2;
     counter.innerHTML = `Переходы: ${redirects}`;
   }
-  iframe.src="https://wikipedia.utidteam.com/wikipedia.php?page=Служебная:Случайная_страница";
+  iframe.src = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://ru.wikipedia.org/wiki/Служебная:Случайная_страница`)}`
   layout.style.display = "none";
 }
 
