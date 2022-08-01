@@ -24,7 +24,6 @@ iframe.addEventListener("load", async function(){
   let page = iframe.contentWindow.document;
   let header = page.getElementById("firstHeading");
   iframe.style.opacity = "1";
-  console.log(pageURL.split(wikipediaURI + '/wiki/')[1], encodeURIComponent(customPage))
   if (pageURL.split(wikipediaURI + '/wiki/')[1] == encodeURIComponent(customPage)){
     uraUraYaVyigralHhahahahahhaha();
     return false;
