@@ -24,7 +24,7 @@ iframe.addEventListener("load", async function(){
   let page = iframe.contentWindow.document;
   let header = page.getElementById("firstHeading");
   iframe.style.opacity = "1";
-  if (iframe.src == `/blank.html?page=${pUrlFormat(customPage)}`){
+  if (encodeURIComponent(pageURL) == pUrlFormat(customPage)){
     uraUraYaVyigralHhahahahahhaha();
     return false;
   }
