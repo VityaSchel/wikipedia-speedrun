@@ -4,14 +4,21 @@ let layout = document.getElementById("layout_iframe");
 let layout_win = document.getElementById("layout_win");
 let layout_load = document.getElementById("layout_load");
 
+const pUrlFormat = page => encodeURIComponent(`https://ru.wikipedia.org/wiki/${page}`)
+
 let hrefsCollection;
 let callbackInterval;
-iframe.addEventListener("load", function(){
+iframe.addEventListener("load", async function(){
   if(iframe.src == ""){ return false; }
+
+  const wikipediaResponse = await fetch(`https://api.allorigins.win/raw?url=${(new URL(iframe.src)).searchParams.get('page')}`)
+  const wikipediaContent = await wikipediaResponse.text()
+  iframe.contentWindow.document.outerHTML = wikipediaContent
+
   let page = iframe.contentWindow.document;
   let header = page.getElementById("firstHeading");
   iframe.style.opacity = "1";
-  if (iframe.src == `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://ru.wikipedia.org/wiki/${customPage}`)}`){
+  if (iframe.src == `./blank.html?page=${pUrlFormat(customPage)}`){
     uraUraYaVyigralHhahahahahhaha();
     return false;
   }
@@ -85,8 +92,7 @@ function selectCustom() {
 
 function setarticle_root(o) {
   let l = o.getAttribute("prevhref");
-  iframe.src = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://ru.wikipedia.org/wiki/${l}`)}`;
-  //just wanted to say that it won't work with edits and any arguments in url :)
+  iframe.src = `./blank.html?page=${pUrlFormat(l)}`;
   clearInterval(callbackInterval);
   if(prefferedType == 2){
     redirects += 1;
@@ -116,7 +122,7 @@ function start(s){
     prefferedType = 2;
     counter.innerHTML = `Переходы: ${redirects}`;
   }
-  iframe.src = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://ru.wikipedia.org/wiki/Служебная:Случайная_страница`)}`
+  iframe.src = `./blank.html?page=${pUrlFormat('Служебная:Случайная_страница')}`
   layout.style.display = "none";
 }
 
