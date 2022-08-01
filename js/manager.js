@@ -24,7 +24,8 @@ iframe.addEventListener("load", async function(){
   let page = iframe.contentWindow.document;
   let header = page.getElementById("firstHeading");
   iframe.style.opacity = "1";
-  if (encodeURIComponent(pageURL) == pUrlFormat(customPage)){
+  console.log(pageURL.split(wikipediaURI + '/wiki/')[1], encodeURIComponent(customPage))
+  if (pageURL.split(wikipediaURI + '/wiki/')[1] == encodeURIComponent(customPage)){
     uraUraYaVyigralHhahahahahhaha();
     return false;
   }
@@ -145,7 +146,7 @@ function restart() {
 }
 
 function uraUraYaVyigralHhahahahahhaha(){
-  wikipediasrc.src = "";
+  wikipediasrc.src = "/blank.html?page=";
   layout_load.style.display = "none";
   layout_win.style.display = "";
   if(prefferedType == 1){
