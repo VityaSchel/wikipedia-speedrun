@@ -11,7 +11,7 @@ iframe.addEventListener("load", function(){
   let page = iframe.contentWindow.document;
   let header = page.getElementById("firstHeading");
   iframe.style.opacity = "1";
-  if(iframe.src == "https://wikipedia.utidteam.com/wikipedia.php?page="+encodeURI(customPage)){
+  if (iframe.src == `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://ru.wikipedia.org/wiki/${customPage}`)}`){
     uraUraYaVyigralHhahahahahhaha();
     return false;
   }
@@ -85,7 +85,7 @@ function selectCustom() {
 
 function setarticle_root(o) {
   let l = o.getAttribute("prevhref");
-  iframe.src = "https://wikipedia.utidteam.com/wikipedia.php?page="+l;
+  iframe.src = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://ru.wikipedia.org/wiki/${l}`)}`;
   //just wanted to say that it won't work with edits and any arguments in url :)
   clearInterval(callbackInterval);
   if(prefferedType == 2){
