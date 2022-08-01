@@ -4,21 +4,23 @@ let layout = document.getElementById("layout_iframe");
 let layout_win = document.getElementById("layout_win");
 let layout_load = document.getElementById("layout_load");
 
-const pUrlFormat = page => encodeURIComponent(`https://ru.wikipedia.org/wiki/${page}`)
+const isEnglishLocale = window.location.pathname.split('/')?.[1] === 'en'
+const wikipediaURI = isEnglishLocale ? 'https://wikipedia.org' : 'https://ru.wikipedia.org'
+const pUrlFormat = page => encodeURIComponent(`${wikipediaURI}/wiki/${page}`)
 
 let hrefsCollection;
 let callbackInterval;
 iframe.addEventListener("load", async function(){
   if(iframe.src == ""){ return false; }
 
-  const wikipediaResponse = await fetch(`https://api.allorigins.win/raw?url=${(new URL(iframe.src)).searchParams.get('page')}`)
+  const wikipediaResponse = await fetch(`https://api.allorigins.win/raw?url=${(new URL(iframe.src)).searchParams.get('page')}&t=${Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)}`)
   const wikipediaContent = await wikipediaResponse.text()
-  iframe.contentWindow.document.outerHTML = wikipediaContent
+  iframe.contentWindow.document.querySelector('html').innerHTML = wikipediaContent
 
   let page = iframe.contentWindow.document;
   let header = page.getElementById("firstHeading");
   iframe.style.opacity = "1";
-  if (iframe.src == `./blank.html?page=${pUrlFormat(customPage)}`){
+  if (iframe.src == `/blank.html?page=${pUrlFormat(customPage)}`){
     uraUraYaVyigralHhahahahahhaha();
     return false;
   }
@@ -29,7 +31,7 @@ iframe.addEventListener("load", async function(){
   navs.outerHTML = "";
   foot.outerHTML = "";
   let styles = document.createElement("link");
-  styles.setAttribute("href","https://ru.wikipedia.org/w/load.php?lang=ru&modules=ext.cite.styles%7Cext.flaggedRevs.basic%2Cicons%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.toc.styles%7Cmediawiki.widgets.styles%7Coojs-ui-core.icons%2Cstyles%7Coojs-ui.styles.indicators%7Cskins.vector.styles.legacy%7Cwikibase.client.init&only=styles&skin=vector");
+  styles.setAttribute("href", `${wikipediaURI}/w/load.php?lang=ru&modules=ext.cite.styles%7Cext.flaggedRevs.basic%2Cicons%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.toc.styles%7Cmediawiki.widgets.styles%7Coojs-ui-core.icons%2Cstyles%7Coojs-ui.styles.indicators%7Cskins.vector.styles.legacy%7Cwikibase.client.init&only=styles&skin=vector`);
   styles.setAttribute("rel","stylesheet");
   page.head.appendChild(styles);
 
@@ -55,7 +57,7 @@ iframe.addEventListener("load", async function(){
     let lnk;
     if(href.indexOf("/wiki/") != 0){
       ln.setAttribute("href", "#");
-      ln.setAttribute("onclick","alert('Внешние ссылки не поддерживаются в wikipedia speedrun'); return false;");
+      ln.setAttribute("onclick",`alert('${isEnglishLocale ? 'External links aren\'t supported in wikipedia speedrun' : 'Внешние ссылки не поддерживаются в wikipedia speedrun'}'); return false;`);
     } else {
       lnk = href.substr(6);
       ln.setAttribute("href", "#");
@@ -77,26 +79,26 @@ iframe.addEventListener("load", async function(){
 
 let customPage = "Гитлер,_Адольф";
 function selectCustom() {
-  let customURL = window.prompt("Ссылка на статью (редиректы не работают)","https://ru.wikipedia.org/wiki/Гитлер,_Адольф");
+  let customURL = window.prompt(isEnglishLocale ? "Link to the article (redirects does not work)" : "Ссылка на статью (редиректы не работают)","https://ru.wikipedia.org/wiki/Гитлер,_Адольф");
   if (customURL != null && customURL != "") {
     if(customURL.indexOf("//ru.wikipedia.org/wiki/") == -1){
-      alert("Введите ссылку на статью");
+      alert(isEnglishLocale ? "Enter link to the article" : "Введите ссылку на статью");
       return false;
     } else {
-      customPage = decodeURI(customURL.split("//ru.wikipedia.org/wiki/")[1]);
+      customPage = decodeURI(customURL.split(isEnglishLocale ? "//wikipedia.org/wiki/" : "//ru.wikipedia.org/wiki/")[1]);
       customPage = customPage.replace(/_/ig, " ");
-      document.getElementById("customPageIndicator").innerText = "Вы выбрали в качестве финальной страницы "+customPage;
+      document.getElementById("customPageIndicator").innerText = isEnglishLocale ? "You selected " + customPage + " as final page" : "Вы выбрали в качестве финальной страницы " + customPage;
     }
   }
 }
 
 function setarticle_root(o) {
   let l = o.getAttribute("prevhref");
-  iframe.src = `./blank.html?page=${pUrlFormat(l)}`;
+  iframe.src = `/blank.html?page=${pUrlFormat(l)}`;
   clearInterval(callbackInterval);
   if(prefferedType == 2){
     redirects += 1;
-    counter.innerHTML = `Переходы: ${redirects}`;
+    counter.innerHTML = isEnglishLocale ? `Redirects: ${redirects}` : `Переходы: ${redirects}`;
   }
   layout_load.style.display = "block";
   iframe.style.opacity = "0";
@@ -120,9 +122,9 @@ function start(s){
   } else {
     redirects = 0;
     prefferedType = 2;
-    counter.innerHTML = `Переходы: ${redirects}`;
+    counter.innerHTML = isEnglishLocale ? `Redirects: ${redirects}` : `Переходы: ${redirects}`;
   }
-  iframe.src = `./blank.html?page=${pUrlFormat('Служебная:Случайная_страница')}`
+  iframe.src = `/blank.html?page=${pUrlFormat(isEnglishLocale ? 'Special:Random' : 'Служебная:Случайная_страница')}`
   layout.style.display = "none";
 }
 
@@ -144,8 +146,8 @@ function uraUraYaVyigralHhahahahahhaha(){
     let mins = "00"+(~~(seconds / 60));
     let secs = "0"+seconds % 60;
     let time = `${mins.slice(-2)}:${secs.slice(-2)}`
-    document.getElementById("win_results").innerHTML = `Время: ${time}`;
+    document.getElementById("win_results").innerHTML = isEnglishLocale ? `Time: ${time}` : `Время: ${time}`;
   } else {
-    document.getElementById("win_results").innerHTML = `Переходов: ${redirects}${redirects<=1 ? "; Вам повезло :D" : ""}`;
+    document.getElementById("win_results").innerHTML = isEnglishLocale ? `Redirects: ${redirects}${redirects <= 1 ? "; You lucky :D" : ""}` : `Переходов: ${redirects}${redirects<=1 ? "; Вам повезло :D" : ""}`;
   }
 }

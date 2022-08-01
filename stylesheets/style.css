@@ -62,7 +62,8 @@ body {
   left:50%;
   transform:translate(-50%,-50%);
 }
-iframe {
+iframe,
+.layout_iframe {
   border: 1px solid black;
 }
 footer {

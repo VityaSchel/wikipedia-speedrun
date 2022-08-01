@@ -38,7 +38,7 @@
     <div class="main-col-outer" align="center">
       <div class="main-col" align="left">
         <h1>Welcome to the Wikipedia speedrun website</h1>
-        <p>This is how it works. There are two ways to play: less time or less redirects.</p>
+        <p>This is how it works. There are two ways to play: minimum time or minimum redirects.</p>
         <div class="step-block">
           <div class="step">
             <div class="step-round">1</div>
@@ -59,11 +59,11 @@
               <div class="step-round">3</div>
               <img src="./img/step3_1.png"/>
             </div>
-            <p>Less time</p>
+            <p>Minimum time</p>
             <ul>
               <li>Follow links that may lead to articles with more links</li>
               <li>Try to get to article about Europe</li>
-              <li>Look at the dates in pages</li>
+              <li>Look at dates in pages</li>
             </ul>
           </div>
           <div class="step-by">
@@ -71,9 +71,9 @@
               <div class="step-round">3</div>
               <img src="./img/step3_2.png"/>
             </div>
-            <p>Less redirects</p>
+            <p>Minimum redirects</p>
             <ul>
-              <li>Carefully read articles and pick links</li>
+              <li>Carefully read articles and choose links</li>
               <li>Try to get to final page without unnecessary redirects</li>
               <li>Pay attention to articles' categories</li>
             </ul>
@@ -81,9 +81,9 @@
         </div>
         <div class="layout_iframe" id="layout_iframe">
           <div align="center">
-            <a href="#" onclick="start('time'); return false;">Less time</a><br>
+            <a href="#" onclick="start('time'); return false;">Minimum time</a><br>
             <p>or</p>
-            <a href="#" onclick="start('links'); return false;">Less redirects</a><br>
+            <a href="#" onclick="start('links'); return false;">Minimum redirects</a><br>
             <p id="customPageIndicator"></p>
           </div>
         </div>
@@ -109,6 +109,6 @@
         <a href="https://github.com/VityaSchel/wikipedia-speedrun">Website sources on GitHub (2020)</a>
       </span>
     </footer>
-    <script src="./js/manager.js?v=1.11"></script>
+    <script src="../js/manager.js?v=1.12"></script>
   </body>
 </html>
